@@ -1,6 +1,6 @@
 # terraform-learning
 # The aim of this repo is to start pracicing Terraform...
-#How to run
+# How to run
  - ``` export AWS_SECRET_ACCESS_KEY=xxxx```
  - ```export AWS_ACCESS_KEY_ID=yyy```
  -```export TF_VAR_database_user_name=xxxx```
