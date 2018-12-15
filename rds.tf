@@ -1,9 +1,16 @@
 provider "aws" {
-
-   region = "${var.aws_region}"
+  region = "${var.aws_region}"
 
 }
 
+terraform {
+  backend  "s3" {
+    bucket         = "elsayed-terrafom"
+    dynamodb_table = "terraform-state-lock"
+    key            = "terraform.tfstate"
+    region         = "eu-west-1"
+  }
+}
 
 resource "aws_db_instance" "default" {
   allocated_storage           = "${var.allocated_storage}"
