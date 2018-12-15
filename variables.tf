@@ -1,12 +1,12 @@
 variable "aws_region" {
-    description = "EC2 Region for the VPC"
-    default = "eu-west-1"
+  description = "EC2 Region for the VPC"
+  default     = "eu-west-1"
 }
 
 variable "engine" {
   type        = "string"
   description = "Database engine type"
-  default    = "postgres"
+  default     = "postgres"
 }
 
 variable "engine_version" {
@@ -23,7 +23,6 @@ variable "instance_class" {
 
 }
 
-
 variable "auto_minor_version_upgrade" {
   type        = "string"
   description = "Allow automated minor version upgrade (e.g. from Postgres 9.5.3 to Postgres 9.5.4)"
@@ -33,7 +32,6 @@ variable "auto_minor_version_upgrade" {
 variable "database_name" {
   type        = "string"
   description = "The name of the database to create when the DB instance is created"
-  "terraformDB"
 }
 
 variable "database_user_name" {
