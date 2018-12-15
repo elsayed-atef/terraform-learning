@@ -12,6 +12,22 @@ terraform {
   }
 }
 
+resource "aws_dynamodb_table" "dynamodb-state-lock" {
+  name           = "terraform-state-lock"
+  hash_key       = "LockID"
+  read_capacity  = 5
+  write_capacity = 5
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+
+  tags {
+    Name = "DynamoDB Terraform State Lock Table"
+  }
+}
+
 resource "aws_db_instance" "default" {
   allocated_storage           = "${var.allocated_storage}"
   storage_type                = "${var.storage_type}"
