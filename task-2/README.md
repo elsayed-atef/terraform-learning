@@ -17,7 +17,7 @@
       
   after the you will have an AMI , to create an EC2 from that AMI 
   
-      ADD `ec2-vars.tf` , `packer-ec2.tf` to the parent directory
-      
-      RUN `terraform plan`
-      RUN `trraform update`
+  add ` ec2-vars.tf ` , ` packer-ec2.tf ` to the parent directory
+  
+  RUN `terraform plan`
+  RUN `trraform update` 
