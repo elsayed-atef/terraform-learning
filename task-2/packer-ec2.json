@@ -1,0 +1,39 @@
+{
+  "variables": {
+    "aws_region": "{{env `AWS_REGION`}}",
+    "ami_name": "{{env `AMI_NAME`}}"
+  },
+  "builders": [{
+    "name": "AWS AMI Builder",
+    "type": "amazon-ebs",
+    "region": "{{user `aws_region`}}",
+    "source_ami_filter": {
+        "filters": {
+            "virtualization-type": "hvm",
+            "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+            "root-device-type": "ebs"
+        },
+        "owners": ["099720109477"],
+        "most_recent": true
+    },
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "packer-ec2 {{timestamp}}",
+    "tags": {
+      "Name": "{{user `ami_name`}}"
+    },
+    "iam_instance_profile": "access-terraform"
+
+  }],
+  "provisioners": [
+    {
+        "type": "shell",
+        "script": "provision.sh"
+    },
+    {
+        "type": "ansible-local",
+        "extra_arguments": [ "-v" ],
+        "playbook_file": "./ansible/playbook.yaml"
+    }
+  ]
+}
