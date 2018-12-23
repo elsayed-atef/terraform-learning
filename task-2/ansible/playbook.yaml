@@ -21,6 +21,16 @@
     pip:
       name: python-terraform
 
+  - name: Install flask
+    become: yes
+    pip:
+      name: flask
+
+  - name: Install ppsycopg2
+    become: yes
+    pip:
+      name: psycopg2
+
   - name: get python app
     aws_s3:
       bucket: elsayed-terrafom
