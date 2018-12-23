@@ -15,7 +15,7 @@
   - To apply
       RUN `packer apply packer-ec2.json`
       
-  after the you will have an AMI , to create an EC2 from that AMI 
+  after that you will have an AMI , to create an EC2 from that AMI 
   
   add ` ec2-vars.tf ` , ` packer-ec2.tf ` to the parent directory
   
