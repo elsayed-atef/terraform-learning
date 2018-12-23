@@ -1,0 +1,52 @@
+- hosts: localhost
+  gather_facts: False
+  tasks:
+  - name: Install Boto
+    become: yes
+    pip:
+      name: boto
+
+  - name: Install Boto3
+    become: yes
+    pip:
+      name: boto3
+
+  - name: Install AWScli
+    become: yes
+    pip:
+      name: awscli
+
+  - name: Install Python Terraform
+    become: yes
+    pip:
+      name: python-terraform
+
+  - name: get python app
+    aws_s3:
+      bucket: elsayed-terrafom
+      object: app.py
+      dest: ~/app.py
+      mode: get
+
+  - name: get terrafom state file
+    aws_s3:
+       bucket: elsayed-terrafom
+       object: terraform.tfstate
+       dest: ~/terraform.tfstate
+       mode: get
+
+  - name: install unzip
+    become: yes
+    apt:
+      name: unzip
+      state: present
+
+  - name: terraform install
+    become: yes
+    unarchive:
+        src: https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
+        dest: /usr/bin
+        remote_src: True
+
+  - name: terraform engine version
+    command: terraform version
