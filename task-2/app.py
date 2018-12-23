@@ -17,7 +17,7 @@ if 'RDS_DB_NAME' in os.environ:
         }
     }
 
-
+print(DATABASES)
 
 def database():
      conn = psycopg2.connect(dbname=DATABASES["default"]["NAME"] , host=DATABASES["default"]["HOST"] , password=DATABASES["default"]["PASSWORD"], user=DATABASES["default"]["USER"] , port=DATABASES["default"]["PORT"] )
@@ -35,7 +35,7 @@ def database():
 app = Flask(__name__)
 @app.route("/")
 def main():
-     value = database()
-     return "Welcome Visitor  " + str (value)
+    value = database()
+    return "Welcome Visitor  " + str (value)
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0' , port=80)
