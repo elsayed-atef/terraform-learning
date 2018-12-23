@@ -20,4 +20,5 @@
   add ` ec2-vars.tf ` , ` packer-ec2.tf ` to the parent directory
   
   RUN `terraform plan`
+  
   RUN `trraform update` 
