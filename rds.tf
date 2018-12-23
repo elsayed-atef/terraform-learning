@@ -41,3 +41,23 @@ resource "aws_db_instance" "default" {
   auto_minor_version_upgrade  = "${var.auto_minor_version_upgrade}"
   skip_final_snapshot         = "${var.skip_final_snapshot}"
 }
+
+output "RDS_HOSTNAME"{
+  value = "${aws_db_instance.default.address}"
+}
+
+output "RDS_PASSWORD"{
+  value = "${aws_db_instance.default.password}"
+}
+
+output "RDS_USERNAME"{
+  value = "${aws_db_instance.default.username}"
+}
+
+output "RDS_PORT"{
+  value = "${aws_db_instance.default.port}"
+}
+
+output "RDS_DB_NAME"{
+  value = "${aws_db_instance.default.name}"
+}
