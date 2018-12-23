@@ -21,4 +21,4 @@
   
   RUN `terraform plan`
   
-  RUN `trraform update` 
+  RUN `trraform apply` 
